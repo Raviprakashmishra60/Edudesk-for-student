@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}AKTU B.Tech 1st Year Notes{% endblock
+%} {% block head %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/aktu.css') }}"
+/>{% endblock %} {% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1>AKTU B.Tech 1st Year Study Hub</h1>
+    <p class="lead">
+      Syllabus, unit-wise notes and important questions for the common
+      first-year subjects (all branches except Agriculture Engineering and
+      Biotechnology).
+    </p>
+    <div class="notice warn">
+      <b>Please note:</b> notes and questions are original revision material
+      written for EDUDESK. They are <b>not</b> AKTU question papers and may not
+      match your exam exactly. Always confirm your unit list with the latest
+      syllabus on
+      <a href="https://aktu.ac.in" target="_blank" rel="noopener noreferrer"
+        >aktu.ac.in</a
+      >.
+    </div>
+    <div class="search-bar">
+      <input
+        id="aktu-search"
+        type="search"
+        placeholder="Search a subject or topic, e.g. Laplace, Schrodinger, pointers…"
+        aria-label="Search AKTU subjects"
+        autocomplete="off"
+      /><button
+        id="aktu-search-clear"
+        class="icon-btn"
+        type="button"
+        aria-label="Clear search"
+      >
+        ✕
+      </button>
+    </div>
+    <div
+      class="chips"
+      id="aktu-chips"
+      role="group"
+      aria-label="Filter by category"
+    >
+      <button class="chip active" data-category="">All subjects</button>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <p id="aktu-count" class="result-count muted" aria-live="polite"></p>
+    <div id="aktu-grid" class="grid"></div>
+    <p class="muted small" style="margin-top: 22px">
+      Sem 1 and Sem 2 share the same subjects in different groups. In the code
+      (for example BAS101 / BAS201) the first code is used in one semester and
+      the second in the other.
+    </p>
+  </div>
+</section>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/aktu.js') }}"></script>
+{% endblock %}

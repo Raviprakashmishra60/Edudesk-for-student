@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Exam Center{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container">
+  <h1>Exam Center</h1>
+  <p class="lead">Eligibility, registration steps and documents for major exams. Exam dates change every year, so check the official website for current dates.</p>
+  <div class="search-bar"><input id="exam-search" type="search" placeholder="Search JEE, NEET, CUET, SSC…" aria-label="Search exams" autocomplete="off"></div>
+  <div class="chips" id="exam-chips" role="group" aria-label="Filter by category">
+    <button class="chip active" data-category="">All</button>
+    {% for category in exam_categories %}<button class="chip" data-category="{{ category }}">{{ category }}</button>{% endfor %}
+  </div>
+</div></section>
+<section class="section"><div class="container">
+  <p id="exam-count" class="result-count muted" aria-live="polite"></p>
+  <div id="exam-grid" class="grid"></div>
+</div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/exams.js') }}"></script>{% endblock %}

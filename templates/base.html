@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Everything Students Need. In One Desk.{% endblock %} · EDUDESK</title>
+  <meta name="description" content="EDUDESK: find scholarships, understand admission forms, prepare documents, track applications and get answers to education questions.">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body data-whatsapp="{{ whatsapp_number }}" data-user="{{ user.name if user else '' }}">
+  {% set nav_items = [('home', '/', 'Home'), ('services', '/services', 'Services'), ('scholarships', '/scholarships', 'Scholarships'),
+                      ('colleges', '/colleges', 'Colleges'), ('exams', '/exams', 'Exams'), ('aktu', '/aktu', 'AKTU'), ('ask', '/ask', 'Ask EDUDESK'),
+                      ('dashboard', '/dashboard', 'Dashboard')] %}
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="EDUDESK home">
+        <img src="{{ url_for('static', filename='images/favicon.svg') }}" alt="" width="34" height="34">
+        <span>EDU<b>DESK</b></span>
+      </a>
+      <nav id="main-nav" class="main-nav" aria-label="Main">
+        {% for key, href, label in nav_items %}
+          <a href="{{ href }}" class="{{ 'active' if active == key else '' }}">{{ label }}</a>
+        {% endfor %}
+        <div class="nav-actions-mobile">
+          {% if user %}<a class="btn btn-ghost" href="/logout">Log out</a>{% else %}<a class="btn btn-primary" href="/login?tab=register">Get Started</a>{% endif %}
+        </div>
+      </nav>
+      <div class="header-actions">
+        {% if user %}
+          <span class="user-chip" title="{{ user.email }}">{{ user.name.split(' ')[0] }}</span>
+          <a class="btn btn-ghost btn-sm" href="/logout">Log out</a>
+        {% else %}
+          <a class="btn btn-ghost btn-sm" href="/login">Log in</a>
+          <a class="btn btn-primary btn-sm" href="/login?tab=register">Get Started</a>
+        {% endif %}
+        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="logo" href="/"><img src="{{ url_for('static', filename='images/favicon.svg') }}" alt="" width="30" height="30"><span>EDU<b>DESK</b></span></a>
+        <p class="muted">Everything Students Need. In One Desk.</p>
+      </div>
+      <div><h4>Explore</h4><a href="/services">Services</a><a href="/scholarships">Scholarships</a><a href="/colleges">Colleges</a><a href="/exams">Exams</a><a href="/aktu">AKTU 1st Year</a></div>
+      <div><h4>Tools</h4><a href="/ask">Ask EDUDESK</a><a href="/documents">Document Center</a><a href="/dashboard">Dashboard &amp; Tracker</a></div>
+      <div><h4>Please note</h4><p class="muted small">Records on EDUDESK are demo data. Always verify deadlines, fees and eligibility on the official website.</p></div>
+    </div>
+  </footer>
+
+  <a id="float-help" class="float-help" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Need Help?</a>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

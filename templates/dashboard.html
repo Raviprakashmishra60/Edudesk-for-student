@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Student Dashboard{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">{% endblock %}
+{% block content %}
+<section class="page-hero compact"><div class="container dash-head">
+  <div>
+    <h1 id="welcome">Welcome{% if user %}, {{ user.name.split(' ')[0] }}{% endif %}!</h1>
+    <p class="lead">Track your applications, deadlines and saved services in one place.</p>
+  </div>
+  <button class="btn btn-primary" id="add-app-top">+ Add Application</button>
+</div></section>
+
+<section class="section tight"><div class="container">
+  {% if not user %}
+  <div class="notice">You are using EDUDESK as a <b>guest</b>. Your tracker is saved in this browser session. <a href="/login?tab=register">Create a free account</a> to keep it safely and use it on other devices — your current data will be moved to your account.</div>
+  {% endif %}
+
+  <div class="stat-grid" id="stat-cards">
+    <div class="card stat"><small>My Applications</small><b id="stat-apps">–</b></div>
+    <div class="card stat"><small>Saved Services</small><b id="stat-saved">–</b></div>
+    <div class="card stat"><small>Upcoming Deadlines</small><b id="stat-deadlines">–</b></div>
+    <div class="card stat"><small>Scholarship Matches</small><b id="stat-matches">–</b><a class="small" id="match-link" href="/scholarships">Set your details</a></div>
+    <div class="card stat"><small>Recent Questions</small><b id="stat-questions">–</b></div>
+  </div>
+
+  <div class="quick-actions">
+    <button class="btn btn-soft" id="add-app-quick">+ Add Application</button>
+    <a class="btn btn-soft" href="/scholarships">Find Scholarship</a>
+    <a class="btn btn-soft" href="/ask">Ask EDUDESK</a>
+    <a class="btn btn-soft" href="/colleges">Find College</a>
+    <a class="btn btn-soft" href="/exams">Browse Exams</a>
+    <a class="btn btn-soft" href="/documents">Document Center</a>
+  </div>
+
+  <div class="dash-grid">
+    <div class="card panel wide">
+      <h3>Application progress</h3>
+      <div id="progress" class="progress-bars"></div>
+    </div>
+
+    <div class="card panel wide">
+      <div class="panel-head"><h3>My applications</h3><button class="btn btn-sm btn-primary" id="add-app-panel">+ Add</button></div>
+      <div id="app-list" class="app-list"></div>
+    </div>
+
+    <div class="card panel">
+      <h3>Deadlines</h3>
+      <div class="chips small-chips" id="deadline-tabs">
+        <button class="chip active" data-tab="reminders">Reminders</button>
+        <button class="chip" data-tab="upcoming">Upcoming</button>
+        <button class="chip" data-tab="past">Past</button>
+      </div>
+      <div id="deadline-list" class="deadline-list"></div>
+    </div>
+
+    <div class="card panel">
+      <h3>Saved services</h3>
+      <div id="saved-list" class="plain-list"></div>
+    </div>
+
+    <div class="card panel">
+      <h3>Recent questions</h3>
+      <ul id="question-list" class="plain-list"></ul>
+    </div>
+  </div>
+</div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

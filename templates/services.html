@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Student Services{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container">
+  <h1>Student Services</h1>
+  <p class="lead">Scholarships, admissions, exams, certificates, documents and more — with eligibility, documents, steps and official links.</p>
+  <div class="search-bar"><input id="service-search" type="search" placeholder="Search for scholarship, admission, exam, certificate…" aria-label="Search services" autocomplete="off"><button id="service-search-clear" class="icon-btn" type="button" aria-label="Clear search">✕</button></div>
+  <div class="chips" id="category-chips" role="group" aria-label="Filter by category">
+    <button class="chip active" data-category="">All</button>
+    {% for category in service_categories %}<button class="chip" data-category="{{ category }}">{{ category }}</button>{% endfor %}
+  </div>
+</div></section>
+<section class="section"><div class="container">
+  <p id="service-count" class="result-count muted" aria-live="polite"></p>
+  <div id="service-grid" class="grid"></div>
+</div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/services.js') }}"></script>{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Scholarship Finder{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container">
+  <h1>Scholarship Finder</h1>
+  <p class="lead">Filter scholarships by your details. <b>Demo data — verify on the official website.</b> Amounts and last dates are not listed here on purpose.</p>
+  <form id="scholarship-filters" class="filters" autocomplete="off">
+    <label class="field">Course<select name="course"><option value="">Any</option></select></label>
+    <label class="field">Class / level<select name="level"><option value="">Any</option><option>10th</option><option>12th</option><option>Undergraduate</option><option>Postgraduate</option></select></label>
+    <label class="field">State<select name="state" data-states><option value="">Any</option></select></label>
+    <label class="field">Category<select name="category"><option value="">Any</option><option>General</option><option>EWS</option><option>OBC</option><option>SC</option><option>ST</option></select></label>
+    <label class="field">Family income (₹ / year)<input name="income" type="number" min="0" step="1000" inputmode="numeric" placeholder="e.g. 250000"></label>
+    <label class="field">Marks (%)<input name="marks" type="number" min="0" max="100" inputmode="numeric" placeholder="e.g. 75"></label>
+    <label class="field">Government / Private<select name="type"><option value="">Any</option><option>Government</option><option>Private</option></select></label>
+    <div class="field filter-buttons"><button class="btn btn-primary" type="submit">Find scholarships</button><button class="btn btn-ghost" type="reset" id="scholarship-reset">Reset</button></div>
+  </form>
+</div></section>
+<section class="section"><div class="container">
+  <p id="scholarship-count" class="result-count muted" aria-live="polite"></p>
+  <div id="scholarship-grid" class="grid"></div>
+</div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/scholarship.js') }}"></script>{% endblock %}

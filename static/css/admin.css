@@ -1,0 +1,22 @@
+/* EDUDESK - admin panel */
+.admin-top { background: #fff; border-bottom: 1px solid var(--line, #e5e7f5); position: sticky; top: 0; z-index: 20; }
+.admin-bar { display: flex; align-items: center; gap: 12px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+.admin-brand { font-weight: 800; text-decoration: none; color: inherit; font-size: 1.1rem; }
+.admin-brand span { color: var(--primary, #5b5bd6); }
+.admin-spacer { flex: 1; }
+.admin-main { padding-top: 24px; padding-bottom: 60px; }
+.admin-main .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.admin-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+.admin-toolbar input { flex: 1 1 240px; font: inherit; padding: 10px 14px; border: 1.5px solid var(--line, #e5e7f5); border-radius: 12px; background: #fff; }
+.admin-table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line, #e5e7f5); border-radius: 14px; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.admin-table th, .admin-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line, #e5e7f5); vertical-align: middle; }
+.admin-table th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted, #667); background: #f8f9ff; }
+.admin-table tr:last-child td { border-bottom: 0; }
+.admin-actions { white-space: nowrap; text-align: right; }
+.admin-actions .btn { margin-left: 6px; }
+#admin-form { display: grid; gap: 12px; }
+#admin-form textarea, #admin-form select, #admin-form input:not([type=checkbox]) { width: 100%; font: inherit; padding: 9px 12px; border: 1.5px solid var(--line, #e5e7f5); border-radius: 10px; background: #fff; box-sizing: border-box; }
+#admin-form textarea { resize: vertical; }
+#admin-form .field { display: grid; gap: 4px; font-weight: 600; font-size: .9rem; }
+#admin-form .check { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: .9rem; }

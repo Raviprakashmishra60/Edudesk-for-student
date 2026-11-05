@@ -1,0 +1,259 @@
+/* EDUDESK - dashboard widgets */
+.dash-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.dash-head h1 {
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+    margin-bottom: 4px;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stat {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat small {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.stat b {
+    font-size: 2rem;
+    line-height: 1.1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.dash-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.panel h3 {
+    margin-bottom: 12px;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.panel-head h3 {
+    margin: 0;
+}
+
+.progress-bars {
+    display: grid;
+    gap: 12px;
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 28px;
+    gap: 12px;
+    align-items: center;
+    font-size: .88rem;
+}
+
+.bar-track {
+    height: 10px;
+    background: #e9ebf7;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--gradient);
+    transition: width .5s ease;
+}
+
+.bar-row.rejected .bar-fill {
+    background: #ef4444;
+}
+
+.bar-row.approved .bar-fill {
+    background: #22c55e;
+}
+
+.bar-row b {
+    text-align: right;
+}
+
+.app-list {
+    display: grid;
+    gap: 10px;
+}
+
+.app-item {
+    display: grid;
+    gap: 10px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    background: #fff;
+    transition: box-shadow .2s, border-color .2s;
+}
+
+.app-item:hover {
+    box-shadow: var(--shadow);
+    border-color: #d3d6ff;
+}
+
+.app-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.app-title {
+    font-weight: 700;
+}
+
+.app-sub {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.app-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.app-controls select {
+    font: inherit;
+    font-size: .85rem;
+    padding: 7px 10px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.status-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+    background: var(--soft);
+    color: var(--primary-dark);
+}
+
+.status-pill.s-approved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-pill.s-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-pill.s-applied,
+.status-pill.s-under-review {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-pill.s-documents-ready {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.small-chips .chip {
+    padding: 6px 12px;
+    font-size: .8rem;
+}
+
+.deadline-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.deadline-item {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+    background: #fff;
+}
+
+.deadline-item .d-date {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.deadline-item .d-left {
+    float: right;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--amber);
+}
+
+.deadline-item.past .d-left {
+    color: var(--muted);
+}
+
+.deadline-item p {
+    margin: 4px 0 6px;
+    font-size: .88rem;
+    color: var(--muted);
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    border-left: 2px solid #d9dcf5;
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 14px 18px;
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.timeline small {
+    display: block;
+    color: var(--muted);
+}

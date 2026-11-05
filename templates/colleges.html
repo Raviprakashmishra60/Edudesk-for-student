@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}College &amp; Course Finder{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container">
+  <h1>College &amp; Course Finder</h1>
+  <p class="lead">Search colleges by course, location, type, entrance exam and fee band. <b>Demo data — verify on the official website.</b></p>
+  <div class="search-bar"><input id="college-search" type="search" placeholder="Search college, city or course…" aria-label="Search colleges" autocomplete="off"></div>
+  <form id="college-filters" class="filters" autocomplete="off">
+    <label class="field">Course<select name="course"><option value="">Any</option></select></label>
+    <label class="field">State<select name="state"><option value="">Any</option></select></label>
+    <label class="field">City<select name="city"><option value="">Any</option></select></label>
+    <label class="field">Government / Private<select name="type"><option value="">Any</option><option>Government</option><option>Private</option></select></label>
+    <label class="field">Entrance exam<select name="exam"><option value="">Any</option></select></label>
+    <label class="field">Fee band (indicative)<select name="fees"><option value="">Any</option><option value="Low">Low</option><option value="Medium">Medium</option><option value="High">High</option></select></label>
+    <div class="field filter-buttons"><button class="btn btn-ghost" type="reset" id="college-reset">Reset filters</button></div>
+  </form>
+</div></section>
+<section class="section"><div class="container">
+  <p id="college-count" class="result-count muted" aria-live="polite"></p>
+  <div id="college-grid" class="grid"></div>
+</div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/colleges.js') }}"></script>{% endblock %}

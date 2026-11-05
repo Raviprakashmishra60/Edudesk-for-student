@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Everything Students Need. In One Desk.{% endblock %}
+{% block content %}
+{% set icons = {'Scholarships': '🎓', 'College Admissions': '🏛️', 'Entrance Exams': '📝', 'Competitive Exams': '🏆',
+                'Government Education Schemes': '🇮🇳', 'Certificates': '📜', 'Document Services': '📄', 'Internships': '💼',
+                'Career Guidance': '🧭', 'Courses': '📚', 'Education Loans': '💳', 'Counselling': '💬'} %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">From doubt to application — everything in one desk.</span>
+      <h1>Everything Students Need. <span class="gradient-text">In One Desk.</span></h1>
+      <p class="lead">Find scholarships, understand admission forms, prepare documents, track applications and get answers to education-related questions.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary btn-lg" href="/services">Explore Services</a>
+        <a class="btn btn-outline btn-lg" href="/ask">Ask EDUDESK</a>
+      </div>
+      <p class="muted small hero-note">Free to use as a guest. Demo data is clearly labelled — always verify on the official website.</p>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="mock-bar"><i></i><i></i><i></i><span>EDUDESK · Dashboard preview</span></div>
+      <div class="mock-body">
+        <div class="mock-stats">
+          <div><b>4</b><small>Applications</small></div><div><b>7</b><small>Saved</small></div><div><b>3</b><small>Deadlines</small></div>
+        </div>
+        <div class="mock-row"><span>Scholarship form</span><div class="mock-track"><em style="width:80%"></em></div><small>Applied</small></div>
+        <div class="mock-row"><span>B.Tech admission</span><div class="mock-track"><em style="width:50%"></em></div><small>Docs ready</small></div>
+        <div class="mock-row"><span>Entrance exam</span><div class="mock-track"><em style="width:20%"></em></div><small>Not started</small></div>
+        <div class="mock-chip">🔔 Sample reminder: form closes soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container three-up">
+    <article class="card pitch"><span class="pitch-tag red">Problem</span><h3>Too many places, too much confusion</h3>
+      <p>Students struggle to find education information, understand forms, prepare documents and track multiple applications.</p></article>
+    <article class="card pitch"><span class="pitch-tag green">Solution</span><h3>One platform for the whole journey</h3>
+      <p>EDUDESK brings services, scholarships, forms, deadlines, document guidance, application tracking and an education assistant together.</p></article>
+    <article class="card pitch"><span class="pitch-tag purple">Our promise</span><h3>From doubt to application</h3>
+      <p>Ask a question, check eligibility, prepare your files, apply on the official site and track every step in one desk.</p></article>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head"><h2>Student services</h2><p class="muted">Pick a category to see eligibility, documents, steps and official links.</p></div>
+    <div class="category-grid">
+      {% for category in service_categories %}
+        <a class="category-card" href="/services?category={{ category|urlencode }}"><span class="cat-icon">{{ icons.get(category, '📌') }}</span><b>{{ category }}</b></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2>What you can do on EDUDESK</h2></div>
+    <div class="feature-grid">
+      <a class="card feature" href="/scholarships"><h3>🎓 Scholarship Finder</h3><p>Filter by course, state, category, income and marks, then check your eligibility.</p></a>
+      <a class="card feature" href="/colleges"><h3>🏛️ College &amp; Course Finder</h3><p>Search by course, state, city, type, entrance exam and fee band.</p></a>
+      <a class="card feature" href="/exams"><h3>📝 Exam Center</h3><p>Eligibility, registration steps and documents for major exams.</p></a>
+      <a class="card feature" href="/aktu"><h3>📚 AKTU 1st Year Study Hub</h3><p>Unit-wise syllabus, quick notes and important questions for 10 common B.Tech subjects.</p></a>
+      <a class="card feature" href="/ask"><h3>💬 Ask EDUDESK</h3><p>Get clear answers, labelled as general guidance, database info or official source.</p></a>
+      <a class="card feature" href="/documents"><h3>📄 Document Center</h3><p>Resize photos, compress images, merge or split PDFs — privately in your browser.</p></a>
+      <a class="card feature" href="/dashboard"><h3>📌 Application Tracker</h3><p>Track each application from Not Started to Approved, with deadlines and history.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head"><h2>How it works</h2></div>
+    <ol class="steps-row">
+      <li><b>1</b><h4>Search or ask</h4><p>Find a service, scholarship or exam — or just type your question.</p></li>
+      <li><b>2</b><h4>Prepare</h4><p>See eligibility and documents, then get your files ready.</p></li>
+      <li><b>3</b><h4>Apply &amp; track</h4><p>Use the official link, then track progress in your dashboard.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cta">
+    <h2>Ready to get started?</h2>
+    <p>Use EDUDESK as a guest in seconds, or create a free account to keep your data safe.</p>
+    <div class="hero-buttons"><a class="btn btn-light btn-lg" href="/dashboard">Open Dashboard</a><a class="btn btn-outline-light btn-lg" href="/login?tab=register">Create account</a></div>
+  </div>
+</section>
+{% endblock %}

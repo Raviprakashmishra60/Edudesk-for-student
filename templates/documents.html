@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Document Center{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container">
+  <h1>Document Center</h1>
+  <p class="lead">Prepare photos, signatures and PDFs for online forms. <b>Everything runs inside your browser — your files are never uploaded or stored.</b></p>
+  <div class="chips" id="tool-tabs" role="tablist">
+    <button class="chip active" data-tool="image">Image resize &amp; compress</button>
+    <button class="chip" data-tool="img2pdf">Image to PDF</button>
+    <button class="chip" data-tool="merge">PDF merge</button>
+    <button class="chip" data-tool="split">PDF split</button>
+    <button class="chip" data-tool="pdfcompress">PDF compress</button>
+    <button class="chip" data-tool="checker">File size checker</button>
+    <button class="chip" data-tool="guide">Photo &amp; signature guide</button>
+  </div>
+</div></section>
+<section class="section"><div class="container">
+  <div id="pdf-lib-warning" class="notice warn" hidden>PDF tools need the pdf-lib library from the internet (cdnjs). Check your connection and reload this page.</div>
+
+  <div class="card tool" data-panel="image">
+    <h3>Image resize &amp; compress</h3>
+    <p class="muted">Set a size in pixels and/or a maximum file size. Leave a field empty to skip it.</p>
+    <div class="form-row">
+      <label class="field">Choose image<input type="file" id="img-file" accept="image/*"></label>
+      <label class="field">Width (px)<input type="number" id="img-width" min="1" max="10000" placeholder="auto"></label>
+      <label class="field">Height (px)<input type="number" id="img-height" min="1" max="10000" placeholder="auto"></label>
+      <label class="field">Max size (KB)<input type="number" id="img-maxkb" min="5" max="10000" placeholder="e.g. 50"></label>
+      <label class="field">Format<select id="img-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label>
+    </div>
+    <label class="check"><input type="checkbox" id="img-keep" checked> Keep proportions (uses width if both are set)</label>
+    <button class="btn btn-primary" id="img-run">Process image</button>
+    <div id="img-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="img2pdf" hidden>
+    <h3>Image to PDF</h3>
+    <p class="muted">Select one or more images. Each image becomes one PDF page, in the order you pick them.</p>
+    <label class="field">Choose images<input type="file" id="i2p-files" accept="image/*" multiple></label>
+    <button class="btn btn-primary" id="i2p-run">Create PDF</button>
+    <div id="i2p-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="merge" hidden>
+    <h3>PDF merge</h3>
+    <p class="muted">Select two or more PDFs. They are joined in the order you select them.</p>
+    <label class="field">Choose PDFs<input type="file" id="merge-files" accept="application/pdf" multiple></label>
+    <button class="btn btn-primary" id="merge-run">Merge PDFs</button>
+    <div id="merge-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="split" hidden>
+    <h3>PDF split</h3>
+    <p class="muted">Enter page ranges separated by commas. Each range becomes its own PDF. Example: <code>1-2, 3, 4-6</code></p>
+    <div class="form-row">
+      <label class="field">Choose PDF<input type="file" id="split-file" accept="application/pdf"></label>
+      <label class="field">Page ranges<input type="text" id="split-ranges" placeholder="1-2, 3, 4-6"></label>
+    </div>
+    <button class="btn btn-primary" id="split-run">Split PDF</button>
+    <div id="split-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="pdfcompress" hidden>
+    <h3>PDF compress</h3>
+    <p class="muted">Re-saves the PDF with an optimised structure. This helps text-based PDFs; PDFs full of large scanned images may not shrink much. For those, reduce the images first (use the image tool) and then use Image to PDF.</p>
+    <label class="field">Choose PDF<input type="file" id="pc-file" accept="application/pdf"></label>
+    <button class="btn btn-primary" id="pc-run">Compress PDF</button>
+    <div id="pc-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="checker" hidden>
+    <h3>File size checker</h3>
+    <p class="muted">Check whether a file fits the size limit mentioned in the form's notification.</p>
+    <div class="form-row">
+      <label class="field">Choose file<input type="file" id="chk-file"></label>
+      <label class="field">Minimum size (KB)<input type="number" id="chk-min" min="0" placeholder="optional"></label>
+      <label class="field">Maximum size (KB)<input type="number" id="chk-max" min="1" placeholder="e.g. 100"></label>
+    </div>
+    <button class="btn btn-primary" id="chk-run">Check file</button>
+    <div id="chk-result" class="tool-result"></div>
+  </div>
+
+  <div class="card tool" data-panel="guide" hidden>
+    <h3>Photo &amp; signature requirements guide</h3>
+    <p class="notice">Every form has its own rules. The numbers in the official notification always win — this guide only helps you prepare.</p>
+    <ul class="check-list">
+      <li><b>Read the notification first</b> and note the exact size in KB, dimensions in pixels, and format (JPG / PNG / PDF).</li>
+      <li><b>Photo:</b> recent, plain light background, face clearly visible, no filters, no sunglasses or cap unless allowed.</li>
+      <li><b>Signature:</b> sign with a dark pen on plain white paper, scan or photograph in good light, then crop tightly.</li>
+      <li><b>Dimensions:</b> use the Image tool to set the width and height asked in the form.</li>
+      <li><b>File size:</b> use "Max size (KB)" in the Image tool, then confirm in the File size checker.</li>
+      <li><b>Certificates:</b> scan flat and straight; merge several pages into one PDF if the form wants a single file.</li>
+      <li><b>Before uploading:</b> open the final file once to be sure it is clear and not cut off.</li>
+      <li><b>Privacy:</b> do not share your documents on random websites. This page keeps files on your device.</li>
+    </ul>
+    <a class="btn btn-wa" id="doc-help" href="#" target="_blank" rel="noopener">Need Help?</a>
+  </div>
+</div></section>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+<script src="{{ url_for('static', filename='js/documents.js') }}" defer></script>
+{% endblock %}

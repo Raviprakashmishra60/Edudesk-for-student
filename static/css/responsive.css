@@ -1,0 +1,174 @@
+/* EDUDESK - layouts for tablets, laptops and desktops (loaded last so it can override). */
+@media (min-width: 560px) {
+
+  .grid,
+  .three-up,
+  .feature-grid,
+  .steps-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .modal-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal {
+    border-radius: 22px;
+  }
+
+  .toast-root {
+    bottom: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app-item {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 900px) {
+
+  .main-nav,
+  .main-nav.open {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    gap: 2px;
+    align-items: center;
+  }
+
+  .main-nav a {
+    padding: 8px 12px;
+    font-size: .92rem;
+  }
+
+  .nav-actions-mobile,
+  .nav-toggle {
+    display: none;
+  }
+
+  .header-actions .btn,
+  .user-chip {
+    display: inline-flex;
+  }
+
+  .hero {
+    padding: 80px 0 64px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.05fr .95fr;
+    gap: 56px;
+  }
+
+  .mock {
+    transform: rotate(1.5deg);
+    transition: transform .3s;
+  }
+
+  .mock:hover {
+    transform: rotate(0);
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .three-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .steps-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .dash-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dash-grid .wide {
+    grid-column: span 3;
+  }
+
+  .ask-layout {
+    grid-template-columns: 1fr 320px;
+    align-items: start;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.3fr 1fr 1fr 1.5fr;
+  }
+
+  .cta {
+    padding: 56px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .bar-row {
+    grid-template-columns: 96px 1fr 24px;
+    gap: 8px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .ask-form {
+    flex-direction: column;
+  }
+
+  .float-help {
+    padding: 10px 14px;
+    font-size: .85rem;
+  }
+}

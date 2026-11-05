@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · EDUDESK</title>
+  <link rel="icon" href="/static/images/favicon.svg">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+  <header class="admin-top">
+    <div class="container admin-bar">
+      <a class="admin-brand" href="/">EDUDESK <span>Admin</span></a>
+      <span class="muted small">{{ user.email if user else "" }}</span>
+      <span class="admin-spacer"></span>
+      <a class="btn btn-ghost btn-sm" href="/dashboard">Dashboard</a>
+      <a class="btn btn-ghost btn-sm" href="/logout">Log out</a>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+    <h1>Admin panel</h1>
+    <p class="muted">Add, edit or delete content. Changes appear on the website immediately. Only mark data as verified after checking the official source.</p>
+    <div class="chips" id="admin-tabs"></div>
+    <div class="admin-toolbar">
+      <input id="admin-search" type="search" placeholder="Search in this list…" aria-label="Search" autocomplete="off">
+      <span id="admin-count" class="muted small"></span>
+      <button class="btn btn-primary btn-sm" id="admin-add" type="button">+ Add new</button>
+    </div>
+    <div id="admin-list"></div>
+  </main>
+
+  <div class="toast-root" id="toast-root"></div>
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>

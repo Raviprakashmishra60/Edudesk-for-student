@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Ask EDUDESK{% endblock %} {% block
+content %}
+<section class="page-hero">
+  <div class="container">
+    <h1>Ask EDUDESK</h1>
+    <p class="lead">
+      Ask an education question. Every answer is labelled:
+      <span class="badge badge-general">General guidance</span>
+      <span class="badge badge-db">From EDUDESK database</span>
+      <span class="badge badge-official">Official source</span>
+    </p>
+  </div>
+</section>
+<section class="section">
+  <div class="container ask-layout">
+    <div class="chat card">
+      <div id="chat-log" class="chat-log" aria-live="polite">
+        <div class="msg bot">
+          <div class="bubble">
+            Hi! I am EDUDESK. Ask me about scholarships, admissions, entrance
+            exams, documents or what to do after 12th.
+          </div>
+        </div>
+      </div>
+      <div class="chips" id="ask-suggestions">
+        <button class="chip">
+          What documents are required for scholarship?
+        </button>
+        <button class="chip">How can I apply for BTech admission?</button>
+        <button class="chip">What is the difference between CSE and IT?</button>
+        <button class="chip">What should I do after 12th?</button>
+        <button class="chip">Which documents are required for JEE form?</button>
+      </div>
+      <form id="ask-form" class="ask-form" autocomplete="off">
+        <input
+          id="ask-input"
+          type="text"
+          maxlength="500"
+          placeholder="Type your question…"
+          aria-label="Your question"
+          required
+        />
+        <button class="btn btn-primary" type="submit" id="ask-send">Ask</button>
+      </form>
+      <p class="muted small">
+        Answers are general guidance. Verify current deadlines and rules in the
+        official notification.
+      </p>
+    </div>
+    <aside class="card side-card">
+      <h3>Recent questions</h3>
+      <ul id="recent-questions" class="plain-list">
+        <li class="muted small">Loading…</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/ask.js') }}"></script>
+{% endblock %}
